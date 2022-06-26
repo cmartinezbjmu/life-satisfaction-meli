@@ -14,7 +14,7 @@ class FileToDataframe:
         None
     """
 
-    def __init__(self, filename: str, sep: str = ","):
+    def __init__(self, filename: str, sep: str = ",") -> None:
         self.filename = filename
         self.sep = sep
 
