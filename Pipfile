@@ -7,6 +7,10 @@ name = "pypi"
 flask = "*"
 flask-restx = "*"
 pandas = "*"
+pytest = "*"
+pytest-flask = "*"
+pytest-mock = "*"
+flake8 = "*"
 
 [dev-packages]
 
