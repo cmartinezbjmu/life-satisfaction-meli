@@ -12,7 +12,7 @@ class GetLifeSatisfactionUseCase:
         None
     """
 
-    def index_gt(self, index_gt):
+    def index_gt(self, index_gt: float) -> list:
         """Retrive list of countries with index greater
            than user set index filter
 
@@ -21,6 +21,12 @@ class GetLifeSatisfactionUseCase:
         Returns:
             [json] -- Cuntries list and index life satisfaction
         """
+
+        data = FileToDataframe(os.environ['countries_file']).csv()
+        data_filtered = self._filter_by(data)
+        return self._make_response(data_filtered[data_filtered["Value"] > index_gt])
+
+    def _filter_by(self, df: pd.DataFrame) -> pd.DataFrame:
         # Use case columns filter values
         filters = [
             {
@@ -32,15 +38,10 @@ class GetLifeSatisfactionUseCase:
                 "value": "TOT",
             }
         ]
-        data = FileToDataframe(os.environ['countries_file']).csv()
-        data_filtered = self.filter_by(data, filters)
-        return self._make_response(data_filtered[data_filtered["Value"] > index_gt])
-
-    def filter_by(self, df: pd.DataFrame, filters: list) -> pd.DataFrame:
 
         for filter in filters:
             df = df[df[filter["column"]] == filter["value"]]
         return df[["Country", "Value"]]
 
-    def _make_response(self, df: pd.DataFrame):
+    def _make_response(self, df: pd.DataFrame) -> list:
         return json.loads(df.to_json(orient='records'))
