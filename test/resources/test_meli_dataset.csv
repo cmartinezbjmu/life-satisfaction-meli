@@ -1,0 +1,7 @@
+﻿"LOCATION","Country","INDICATOR","Indicator","MEASURE","Measure","INEQUALITY","Inequality","Unit Code","Unit","PowerCode Code","PowerCode","Reference Period Code","Reference Period","Value","Flag Codes","Flags"
+"SVN","Slovenia","HS_SFRH","Self-reported health","L","Value","LW","Low","PC","Percentage","0","Units",,,54,,
+"ZAF","South Africa","HS_SFRH","Self-reported health","L","Value","LW","Low","PC","Percentage","0","Units",,,58,"E","Estimated value"
+"OECD","OECD - Total","HS_SFRH","Self-reported health","L","Value","LW","Low","PC","Percentage","0","Units",,,60,,
+"AUS","Australia","SW_LIFS","Life satisfaction","L","Value","TOT","Total","AVSCORE","Average score","0","Units",,,7.3,,
+"AUT","Austria","SW_LIFS","Life satisfaction","L","Value","TOT","Total","AVSCORE","Average score","0","Units",,,7,,
+"BEL","Belgium","SW_LIFS","Life satisfaction","L","Value","TOT","Total","AVSCORE","Average score","0","Units",,,6.9,,

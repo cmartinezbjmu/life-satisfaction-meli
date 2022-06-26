@@ -1,8 +1,12 @@
 """Countries metrics test."""
-from http import HTTPStatus
-
 import pytest
+import pandas as pd
+from http import HTTPStatus
 from flask.helpers import url_for
+
+from app.api.countries.uses_cases.get_life_satisfaction import GetLifeSatisfactionUseCase
+
+test_dataset = "test/resources/test_meli_dataset.csv"
 
 
 class TestLifeSatisfaction(object):
@@ -43,3 +47,25 @@ class TestLifeSatisfaction(object):
 
         assert response.status_code == HTTPStatus.BAD_REQUEST
         assert response.json == "{'index_gt': ['Missing data for required field.']}"
+
+    def test_get_life_satisfaction_use_case_make_response_method_valid(self):
+        df = pd.read_csv(test_dataset)
+        response = GetLifeSatisfactionUseCase()._make_response(df)
+
+        assert type(response) == list
+        assert response[0]["LOCATION"] == "SVN"
+
+    def test_get_life_satisfaction_use_case_filter_by_method_valid(self):
+        df = pd.read_csv(test_dataset)
+        response = GetLifeSatisfactionUseCase()._filter_by(df)
+
+        assert type(response) == pd.DataFrame
+        assert response.loc[0, "Country"] == "Australia"
+
+    def test_get_life_satisfaction_use_case_index_gt_method_valid(self, mocker):
+        df = pd.read_csv(test_dataset)
+        mocker.patch('app.utils.read_file.FileToDataframe.csv', return_value=df)
+        response = GetLifeSatisfactionUseCase().index_gt(7)
+
+        assert type(response) == list
+        assert response[0]["Country"] == "Australia"

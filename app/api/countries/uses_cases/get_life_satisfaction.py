@@ -41,7 +41,7 @@ class GetLifeSatisfactionUseCase:
 
         for filter in filters:
             df = df[df[filter["column"]] == filter["value"]]
-        return df[["Country", "Value"]]
+        return df[["Country", "Value"]].reset_index()
 
     def _make_response(self, df: pd.DataFrame) -> list:
         return json.loads(df.to_json(orient='records'))
