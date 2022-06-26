@@ -1,9 +1,8 @@
 """Flask countries metrics endpoint."""
-from textwrap import indent
 from flask import request
 from flask_restx import Namespace, Resource
 
-from app.api.countries.uses_cases.get_life_satisfaction_countries import GetLifeSatisfactionUseCase
+from app.api.countries.uses_cases.get_life_satisfaction import GetLifeSatisfactionUseCase
 
 countries = Namespace("countries", description="Endpoind for get metrics by countries around of wolrd")
 
@@ -23,7 +22,7 @@ class LifeSatisfaction(Resource):
         """Retrive list of countries based on user set index filter
 
         Returns:
-            [json] -- Cuntries list and index satisfaction
+            [json] -- Cuntries list and index life satisfaction
         """
         args = request.args
         index_gt = args.get("index[gt]")
