@@ -4,14 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
-flask-restx = "*"
-pandas = "*"
-pytest = "*"
-pytest-flask = "*"
-pytest-mock = "*"
-flake8 = "*"
-marshmallow = "*"
+flask = "2.1.2"
+flask-restx = "0.5.1"
+pandas = "1.4.3"
+pytest = "7.1.2"
+pytest-flask = "1.2.0"
+pytest-mock = "3.8.1"
+flake8 = "4.0.1"
+marshmallow = "3.16.0"
 
 [dev-packages]
 

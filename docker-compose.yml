@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: app
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    command: "python3 -m app"
+    env_file:
+      - .env
+    networks:
+      - main
+
+networks:
+  main:
+    driver: bridge
