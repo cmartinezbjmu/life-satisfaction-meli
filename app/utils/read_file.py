@@ -1,6 +1,5 @@
 """Read files and transform to Pandas Dataframe."""
 import pandas as pd
-
 from app.settings import STATIC_ROOT
 
 
@@ -27,4 +26,9 @@ class FileToDataframe:
         Returns:
             Dataframe {dataframe} -- Pandas Dataframe
         """
-        return pd.read_csv(f"{STATIC_ROOT}/csv/{self.filename}.csv", sep=self.sep)
+        try:
+            return pd.read_csv(f"{STATIC_ROOT}/csv/{self.filename}.csv", sep=self.sep)
+        except FileNotFoundError:
+            print("File not found.")
+        except pd.errors.EmptyDataError:
+            print("No data")

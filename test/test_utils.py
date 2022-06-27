@@ -14,3 +14,8 @@ class TestUtils(object):
         response = FileToDataframe("test").csv()
 
         assert type(response) == pd.DataFrame
+
+    def test_get_life_satisfaction_use_case_index_gt_method_invalid(self, mocker):
+        response = FileToDataframe("test").csv()
+
+        assert response == None
